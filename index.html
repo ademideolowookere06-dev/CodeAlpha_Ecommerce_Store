@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spaceship Wears</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style id="spaceship-brown-white-theme">
+        :root {
+            --brown: #5A321F;
+            --brown-dark: #351B10;
+            --brown-light: #8A5A3C;
+            --cream: #FFFDF8;
+            --white: #FFFFFF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream) !important;
+            color: var(--brown-dark) !important;
+        }
+
+        .navbar {
+            background: var(--white) !important;
+            color: var(--brown-dark) !important;
+            border-bottom: 1px solid rgba(90,50,31,.16);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            margin-left: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: clamp(18px, 3vw, 42px) !important;
+        }
+
+        .nav-links a {
+            color: var(--brown-dark) !important;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--brown-light) !important;
+        }
+
+        .cart-button,
+        .shop-button,
+        .add-cart-button,
+        .checkout-button,
+        .pay-button {
+            background: var(--brown) !important;
+            color: var(--white) !important;
+            border-color: var(--brown) !important;
+        }
+
+        .hero {
+            background: var(--cream) !important;
+        }
+
+        .hero-content h1,
+        .section-heading h2,
+        .about-content h2,
+        .contact-heading h2,
+        .product-info h3,
+        .section-tag {
+            color: var(--brown-dark) !important;
+        }
+
+        .hero-text,
+        .section-heading > p:not(.section-tag),
+        .about-content > p:not(.section-tag) {
+            color: #6D5141 !important;
+        }
+
+        /* Cleaner, stronger hero image treatment */
+        .hero-image {
+            background: var(--brown) !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(53,27,16,.08), transparent 45%, rgba(53,27,16,.16));
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            filter: contrast(1.04) saturate(.92);
+            transform: scale(1.015);
+        }
+
+        .brand-ticker {
+            background: var(--brown) !important;
+            color: var(--white) !important;
+        }
+
+        .product-card,
+        .about-section,
+        .contact-section,
+        footer {
+            background: var(--white) !important;
+        }
+
+        .price,
+        .contact-item strong {
+            color: var(--brown) !important;
+        }
+
+        .product-image {
+            background: #F4EDE7 !important;
+        }
+
+        .view-product {
+            background: var(--brown) !important;
+            color: var(--white) !important;
+        }
+
+        footer {
+            border-top: 1px solid rgba(90,50,31,.15);
+            color: var(--brown-dark) !important;
+        }
+
+        /* Mobile navigation: keep the requested links visible and neat */
+        @media (max-width: 700px) {
+            .nav-links {
+                gap: 12px !important;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .cart-button {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="images/logo.png" alt="Spaceship Wears Logo">
+        </div>
+
+        <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#shop">Shop Collection</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="cart-button" id="cartButton">
+            Cart (<span id="cartCount">0</span>)
+        </button>
+<button class="login-button" onclick="openLogin()">
+    LOGIN
+</button>
+    </nav>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                STREETWEAR • CULTURE • STYLE
+            </p>
+
+            <h1>
+                WEAR THE <br>
+                FUTURE.
+            </h1>
+
+            <p class="hero-text">
+                Spaceship Wears is more than clothing.
+                It is a movement for people who dare to stand out.
+            </p>
+
+            <a href="#shop" class="shop-button">
+                SHOP COLLECTION
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img
+                src="images/hero-image.jpg"
+                alt="Spaceship Wears Collection">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BRAND TICKER
+    ========================== -->
+
+    <section class="brand-ticker">
+
+        <div class="ticker-content">
+
+            SPACESHIP WEARS ✦ STREETWEAR FOR THE BOLD ✦
+            SPACESHIP WEARS ✦ STREETWEAR FOR THE BOLD ✦
+            SPACESHIP WEARS ✦ STREETWEAR FOR THE BOLD ✦
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SHOP SECTION
+    ========================== -->
+
+    <section id="shop" class="shop-section">
+
+        <div class="section-heading">
+
+            <p class="section-tag">
+                EXPLORE THE COLLECTION
+            </p>
+
+            <h2>
+                SHOP SPACESHIP
+            </h2>
+
+            <p>
+                Designed for the bold. Made for those who move differently.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <!-- TRUCKER HAT -->
+
+            <div class="product-card" onclick="openProduct('hat')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/trucker-hat.jpg"
+                        alt="Spaceship Trucker Hat">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP TRUCKER HAT</h3>
+
+                        <p>5 colours available</p>
+
+                    </div>
+
+                    <span class="price">₦6,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGULAR TEE -->
+
+            <div class="product-card" onclick="openProduct('tee')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/regular-tee-white.jpg"
+                        alt="Spaceship Regular Tee">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP REGULAR TEE</h3>
+
+                        <p>Black & White</p>
+
+                    </div>
+
+                    <span class="price">₦25,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TANK TOP -->
+
+            <div class="product-card" onclick="openProduct('tank')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/tank-top.jpg"
+                        alt="Spaceship Tank Top">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP TANK TOP</h3>
+
+                        <p>Black & White</p>
+
+                    </div>
+
+                    <span class="price">₦14,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHORTS -->
+
+            <div class="product-card" onclick="openProduct('shorts')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/shorts.jpg"
+                        alt="Spaceship Shorts">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP SHORTS</h3>
+
+                        <p>Black</p>
+
+                    </div>
+
+                    <span class="price">₦12,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- JORTS -->
+
+            <div class="product-card" onclick="openProduct('jorts')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/jorts.jpg"
+                        alt="Spaceship Jorts">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP JORTS</h3>
+
+                        <p>Available in sizes</p>
+
+                    </div>
+
+                    <span class="price">₦25,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOGGERS -->
+
+            <div class="product-card" onclick="openProduct('joggers')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/joggers.jpg"
+                        alt="Spaceship Joggers">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP JOGGERS</h3>
+
+                        <p>Ash & Black</p>
+
+                    </div>
+
+                    <span class="price">₦18,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- GRAPHIC ARMLESS TEE -->
+
+            <div class="product-card" onclick="openProduct('graphicTee')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/graphic-armless-tee.jpg"
+                        alt="Spaceship Graphic Armless Tee">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>GRAPHIC ARMLESS TEE</h3>
+
+                        <p>Black & White</p>
+
+                    </div>
+
+                    <span class="price">₦18,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOUBLE LAYERED TEE -->
+
+            <div class="product-card" onclick="openProduct('doubleLayeredTee')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/double-layered-tee.jpg"
+                        alt="Spaceship Double Layered Tee">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>DOUBLE LAYERED TEE</h3>
+
+                        <p>Black</p>
+
+                    </div>
+
+                    <span class="price">₦20,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRACKSUIT -->
+
+            <div class="product-card" onclick="openProduct('tracksuit')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/tracksuit.jpg"
+                        alt="Spaceship Tracksuit">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP TRACKSUIT</h3>
+
+                        <p>Black, Red & Blue</p>
+
+                    </div>
+
+                    <span class="price">₦40,000</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- HOODIE JACKET -->
+
+            <div class="product-card" onclick="openProduct('hoodie')">
+
+                <div class="product-image">
+
+                    <img
+                        src="images/hoodie-jacket.jpg"
+                        alt="Spaceship Hoodie Jacket">
+
+                    <span class="view-product">
+                        VIEW PRODUCT
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div>
+
+                        <h3>SPACESHIP HOODIE JACKET</h3>
+
+                        <p>Black</p>
+
+                    </div>
+
+                    <span class="price">₦18,000</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+  <section id="about" class="about-section">
+
+    <div class="about-content">
+
+        <p class="section-tag">ABOUT SPACESHIP</p>
+
+        <h2>
+            MORE THAN<br>
+            JUST CLOTHING.
+        </h2>
+
+        <p>
+            Spaceship Wears is an urban streetwear brand built for
+            individuality, creativity and self-expression. We create
+            pieces for people who are confident enough to stand out
+            and define their own style.
+        </p>
+
+        <p>
+            Inspired by street culture and everyday movement, our
+            collections combine comfort, style and bold expression.
+            Every piece is designed for those who create their own
+            lane and move differently.
+        </p>
+
+        <p>
+            Spaceship Wears is more than just what you wear. It is
+            about confidence, identity and expressing yourself without
+            limits.
+        </p>
+
+    </div>
+
+    <div class="about-number">
+
+        
+
+        <p>
+            URBAN STREETWEAR<br>
+            FOR THE ONES WHO<br>
+            MOVE DIFFERENT.
+        </p>
+
+    </div>
+
+  </section>
+    <!-- =========================
+         CONTACT SECTION
+    ========================== -->
+
+    <section id="contact" class="contact-section">
+
+        <div class="contact-heading">
+
+            <p class="section-tag">
+                LET'S CONNECT
+            </p>
+
+            <h2>
+                STAY IN<br>
+                ORBIT.
+            </h2>
+
+        </div>
+
+
+        <div class="contact-links">
+
+
+            <a
+                href="https://www.instagram.com/spaceship_wears/"
+                target="_blank"
+                class="contact-item">
+
+                <span>INSTAGRAM</span>
+
+                <strong>@spaceship_wears</strong>
+
+            </a>
+
+
+            <a
+                href="https://www.tiktok.com/@spaceshipwears"
+                target="_blank"
+                class="contact-item">
+
+                <span>TIKTOK</span>
+
+                <strong>@spaceshipwears</strong>
+
+            </a>
+
+
+            <a
+                href="https://wa.me/2347046654585"
+                target="_blank"
+                class="contact-item">
+
+                <span>WHATSAPP</span>
+
+                <strong>+234 704 665 4585</strong>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <img
+                src="images/logo.png"
+                alt="Spaceship Wears Logo">
+
+            <span>SPACESHIP WEARS</span>
+
+        </div>
+
+        <p>
+            © 2026 SPACESHIP WEARS. ALL RIGHTS RESERVED.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         PRODUCT MODAL
+    ========================== -->
+
+    <div id="productModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                onclick="closeProduct()">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-image">
+
+                <img
+                    id="modalProductImage"
+                    src=""
+                    alt="Product">
+
+            </div>
+
+
+            <div class="modal-details">
+
+                <p class="section-tag">
+                    SPACESHIP WEARS
+                </p>
+
+                <h2 id="modalProductName"></h2>
+
+                <h3 id="modalProductPrice"></h3>
+
+                <p class="product-description">
+                    Select your preferred colour, size and quantity.
+                </p>
+
+
+                <!-- COLOUR -->
+
+                <div
+                    id="colourGroup"
+                    class="option-group">
+
+                    <h4>COLOUR</h4>
+
+                    <div
+                        id="colourOptions"
+                        class="colour-options">
+
+                    </div>
+
+                </div>
+
+
+                <!-- SIZE -->
+
+                <div
+                    id="sizeGroup"
+                    class="option-group">
+
+                    <h4>SIZE</h4>
+
+                    <div class="size-options">
+
+                        <button onclick="selectSize(this)">S</button>
+
+                        <button onclick="selectSize(this)">M</button>
+
+                        <button onclick="selectSize(this)">L</button>
+
+                        <button onclick="selectSize(this)">XL</button>
+
+                        <button onclick="selectSize(this)">XXL</button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="option-group">
+
+                    <h4>QUANTITY</h4>
+
+                    <div class="quantity-selector">
+
+                        <button onclick="changeQuantity(-1)">
+                            −
+                        </button>
+
+                        <span id="quantity">1</span>
+
+                        <button onclick="changeQuantity(1)">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="add-cart-button"
+                    onclick="addToCart()">
+
+                    ADD TO CART
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CART MODAL
+    ========================== -->
+
+    <div id="cartModal" class="cart-modal">
+
+        <div class="cart-content">
+
+
+            <div class="cart-header">
+
+                <h2>YOUR CART</h2>
+
+                <button onclick="closeCart()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="cartItems">
+
+                <p class="empty-cart">
+                    Your cart is empty.
+                </p>
+
+            </div>
+
+
+            <div class="cart-footer">
+
+                <h3>
+
+                    Total:
+
+                    <span id="cartTotal">
+                        ₦0
+                    </span>
+
+                </h3>
+
+
+                <button
+                    class="checkout-button"
+                    onclick="openCheckout()">
+
+                    PROCEED TO CHECKOUT
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+     CHECKOUT MODAL
+========================== -->
+
+<div id="checkoutModal" class="checkout-modal">
+
+    <div class="checkout-content">
+
+        <button
+            type="button"
+            class="close-checkout"
+            onclick="closeCheckout()">
+
+            ×
+
+        </button>
+
+
+        <div class="checkout-header">
+
+            <p class="section-tag">
+                SPACESHIP WEARS
+            </p>
+
+            <h2>
+                CHECKOUT
+            </h2>
+
+            <p>
+                Complete your details to place your order.
+            </p>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+
+            <!-- CUSTOMER DETAILS -->
+
+            <div class="customer-details">
+
+                <h3>
+                    CUSTOMER DETAILS
+                </h3>
+
+
+                <form id="checkoutForm">
+
+
+                    <div class="form-group">
+
+                        <label for="customerName">
+                            FULL NAME
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            name="customerName"
+                            placeholder="Enter your full name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="customerPhone">
+                            PHONE NUMBER
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            name="customerPhone"
+                            placeholder="Enter your phone number"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="customerEmail">
+                            EMAIL
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            name="customerEmail"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="customerAddress">
+                            DELIVERY ADDRESS
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            name="customerAddress"
+                            placeholder="Enter your delivery address"
+                            required></textarea>
+
+                    </div>
+
+
+                    <!-- PAYMENT METHOD -->
+
+                    <h3 class="payment-heading">
+                        PAYMENT METHOD
+                    </h3>
+
+
+                    <div class="payment-methods">
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="transfer"
+                                checked>
+
+                            Bank Transfer
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="cash">
+
+                            Cash on Delivery
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="pay-button">
+
+                        PLACE ORDER
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <div class="checkout-summary">
+
+                <h3>
+                    ORDER SUMMARY
+                </h3>
+
+
+                <div id="checkoutItems">
+
+                    <p>
+                        Your selected items will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="checkout-total">
+
+                    <strong>
+                        TOTAL
+                    </strong>
+
+                    <strong id="checkoutTotal">
+                        ₦0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     LOGIN MODAL
+========================== -->
+
+<div id="loginModal" class="login-modal">
+
+    <div class="login-content">
+
+        <button
+            type="button"
+            class="close-login"
+            onclick="closeLogin()">
+            ×
+        </button>
+
+        <div class="login-header">
+
+            <p class="section-tag">
+                SPACESHIP WEARS
+            </p>
+
+            <h2>
+                WELCOME BACK
+            </h2>
+
+            <p>
+                Login to your account.
+            </p>
+
+        </div>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="loginEmail">
+                    EMAIL
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="loginPassword">
+                    PASSWORD
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required>
+
+            </div>
+
+            <button
+                type="submit"
+                class="login-submit">
+                LOGIN
+            </button>
+
+        </form>
+
+        <p class="signup-text">
+            Don't have an account?
+            <button
+                type="button"
+                onclick="openSignup()">
+                Create one
+            </button>
+        </p>
+
+    </div>
+
+</div>
+  <!-- =========================
+     SIGN UP MODAL
+========================== -->
+
+<div id="signupModal" class="login-modal">
+
+    <div class="login-content">
+
+        <button
+            type="button"
+            class="close-login"
+            onclick="closeSignup()">
+            ×
+        </button>
+
+        <div class="login-header">
+
+            <p class="section-tag">
+                SPACESHIP WEARS
+            </p>
+
+            <h2>
+                CREATE ACCOUNT
+            </h2>
+
+            <p>
+                Join the Spaceship Wears community.
+            </p>
+
+        </div>
+
+        <form id="signupForm">
+
+            <div class="form-group">
+
+                <label for="signupName">
+                    FULL NAME
+                </label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Enter your full name"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="signupEmail">
+                    EMAIL
+                </label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="signupPhone">
+                    PHONE NUMBER
+                </label>
+
+                <input
+                    type="tel"
+                    id="signupPhone"
+                    placeholder="Enter your phone number"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="signupPassword">
+                    PASSWORD
+                </label>
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Create a password"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    CONFIRM PASSWORD
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    required>
+
+            </div>
+
+            <button
+                type="submit"
+                class="login-submit">
+                CREATE ACCOUNT
+            </button>
+
+        </form>
+
+        <p class="signup-text">
+            Already have an account?
+            <button
+                type="button"
+                onclick="backToLogin()">
+                Login
+            </button>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+/* =========================
+   SPACESHIP WEARS
+   JAVASCRIPT
+========================= */
+
+
+/* =========================
+   PRODUCT DATA
+========================= */
+
+const products = {
+
+    hat: {
+        name: "SPACESHIP TRUCKER HAT",
+        price: 6000,
+        image: "images/trucker-hat.jpg",
+        colours: ["Red", "Black", "White", "Pink", "Blue"],
+        sizes: []
+    },
+
+    tee: {
+        name: "SPACESHIP REGULAR TEE",
+        price: 25000,
+        images: {
+            Black: "images/regular-tee-black.jpg",
+            White: "images/regular-tee-white.jpg"
+        },
+        colours: ["Black", "White"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    tank: {
+        name: "SPACESHIP TANK TOP",
+        price: 14000,
+        image: "images/tank-top.jpg",
+        colours: ["Black", "White"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    shorts: {
+        name: "SPACESHIP SHORTS",
+        price: 12000,
+        image: "images/shorts.jpg",
+        colours: ["Black"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    jorts: {
+        name: "SPACESHIP JORTS",
+        price: 25000,
+        image: "images/jorts.jpg",
+        colours: [],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    joggers: {
+        name: "SPACESHIP JOGGERS",
+        price: 18000,
+        image: "images/joggers.jpg",
+        colours: ["Ash", "Black"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    graphicTee: {
+        name: "SPACESHIP GRAPHIC ARMLESS TEE",
+        price: 20000,
+        image: "images/graphic-armless-tee.jpg",
+        colours: ["Black", "White"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    doubleLayeredTee: {
+        name: "SPACESHIP DOUBLE LAYERED TEE",
+        price: 20000,
+        image: "images/double-layered-tee.jpg",
+        colours: ["Black"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    tracksuit: {
+        name: "SPACESHIP TRACKSUIT",
+        price: 40000,
+        images: {
+            Black: "images/tracksuit-black.jpg",
+            Red: "images/tracksuit-red.jpg",
+            Blue: "images/tracksuit-blue.jpg"
+        },
+        colours: ["Black", "Red", "Blue"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+
+    hoodie: {
+        name: "SPACESHIP HOODIE JACKET",
+        price: 18000,
+        image: "images/hoodie-jacket.jpg",
+        colours: ["Black"],
+        sizes: ["S", "M", "L", "XL", "XXL"]
+    }
+
+};
+
+
+/* =========================
+   CART VARIABLES
+========================= */
+
+let currentProduct = null;
+let selectedColour = "";
+let selectedSize = "";
+let quantity = 1;
+let cart = [];
+
+
+/* =========================
+   OPEN PRODUCT
+========================= */
+
+function openProduct(productId) {
+
+    const product = products[productId];
+
+    if (!product) {
+        console.error("Product not found:", productId);
+        return;
+    }
+
+    currentProduct = product;
+    selectedColour = "";
+    selectedSize = "";
+    quantity = 1;
+
+    const modal = document.getElementById("productModal");
+    const image = document.getElementById("modalProductImage");
+    const name = document.getElementById("modalProductName");
+    const price = document.getElementById("modalProductPrice");
+    const colourOptions = document.getElementById("colourOptions");
+    const colourGroup = document.getElementById("colourGroup");
+    const sizeGroup = document.getElementById("sizeGroup");
+    const sizeOptions = document.querySelector(".size-options");
+    const quantityDisplay = document.getElementById("quantity");
+
+
+    /* PRODUCT IMAGE */
+
+    if (product.image) {
+
+        image.src = product.image;
+
+    } else if (product.images) {
+
+        const firstColour = product.colours[0];
+
+        if (firstColour && product.images[firstColour]) {
+            image.src = product.images[firstColour];
+        }
+
+    }
+
+
+    /* PRODUCT NAME */
+
+    name.textContent = product.name;
+
+
+    /* PRODUCT PRICE */
+
+    price.textContent = "₦" + product.price.toLocaleString();
+
+
+    /* RESET QUANTITY */
+
+    quantityDisplay.textContent = quantity;
+
+
+    /* =========================
+       COLOUR OPTIONS
+    ========================= */
+
+    colourOptions.innerHTML = "";
+
+    if (product.colours && product.colours.length > 0) {
+
+        colourGroup.style.display = "block";
+
+        product.colours.forEach(function(colour, index) {
+
+            const button = document.createElement("button");
+
+            button.type = "button";
+            button.className = "colour-option";
+            button.textContent = colour;
+
+            button.onclick = function() {
+
+                selectColour(button, colour);
+
+            };
+
+            colourOptions.appendChild(button);
+
+            /* Automatically select first colour */
+
+            if (index === 0) {
+                selectColour(button, colour);
+            }
+
+        });
+
+    } else {
+
+        colourGroup.style.display = "none";
+        selectedColour = "";
+
+    }
+
+
+    /* =========================
+       SIZE OPTIONS
+    ========================= */
+
+    sizeOptions.innerHTML = "";
+
+    if (product.sizes && product.sizes.length > 0) {
+
+        sizeGroup.style.display = "block";
+
+        product.sizes.forEach(function(size) {
+
+            const button = document.createElement("button");
+
+            button.type = "button";
+            button.textContent = size;
+
+            button.onclick = function() {
+
+                selectSize(button);
+
+            };
+
+            sizeOptions.appendChild(button);
+
+        });
+
+    } else {
+
+        sizeGroup.style.display = "none";
+        selectedSize = "";
+
+    }
+
+
+    /* SHOW MODAL */
+
+    modal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================
+   CLOSE PRODUCT
+========================= */
+
+function closeProduct() {
+
+    const modal = document.getElementById("productModal");
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================
+   SELECT COLOUR
+========================= */
+
+function selectColour(button, colour) {
+
+    selectedColour = colour;
+
+    document.querySelectorAll(".colour-option").forEach(function(option) {
+
+        option.classList.remove("selected");
+        option.classList.remove("active");
+
+    });
+
+    button.classList.add("selected");
+    button.classList.add("active");
+
+
+    /* Change image when colour changes */
+
+    if (
+        currentProduct &&
+        currentProduct.images &&
+        currentProduct.images[colour]
+    ) {
+
+        document.getElementById("modalProductImage").src =
+            currentProduct.images[colour];
+
+    }
+
+}
+
+
+/* =========================
+   SELECT SIZE
+========================= */
+
+function selectSize(button) {
+
+    selectedSize = button.textContent;
+
+    document.querySelectorAll(".size-options button").forEach(function(option) {
+
+        option.classList.remove("selected");
+        option.classList.remove("active");
+
+    });
+
+    button.classList.add("selected");
+    button.classList.add("active");
+
+}
+
+
+/* =========================
+   CHANGE QUANTITY
+========================= */
+
+function changeQuantity(amount) {
+
+    quantity += amount;
+
+    if (quantity < 1) {
+        quantity = 1;
+    }
+
+    document.getElementById("quantity").textContent = quantity;
+
+}
+
+
+/* =========================
+   ADD TO CART
+========================= */
+
+function addToCart() {
+
+    if (!currentProduct) {
+        return;
+    }
+
+
+    /* Require colour when product has colours */
+
+    if (
+        currentProduct.colours &&
+        currentProduct.colours.length > 0 &&
+        !selectedColour
+    ) {
+
+        alert("Please select a colour.");
+
+        return;
+    }
+
+
+    /* Require size when product has sizes */
+
+    if (
+        currentProduct.sizes &&
+        currentProduct.sizes.length > 0 &&
+        !selectedSize
+    ) {
+
+        alert("Please select a size.");
+
+        return;
+    }
+
+
+    const cartItem = {
+
+        name: currentProduct.name,
+
+        price: currentProduct.price,
+
+        image:
+            currentProduct.image ||
+            (
+                currentProduct.images &&
+                currentProduct.images[selectedColour]
+            ),
+
+        colour: selectedColour,
+
+        size: selectedSize,
+
+        quantity: quantity
+
+    };
+
+
+    /* Check if same product/colour/size already exists */
+
+    const existingItem = cart.find(function(item) {
+
+        return (
+            item.name === cartItem.name &&
+            item.colour === cartItem.colour &&
+            item.size === cartItem.size
+        );
+
+    });
+
+
+    if (existingItem) {
+
+        existingItem.quantity += quantity;
+
+    } else {
+
+        cart.push(cartItem);
+
+    }
+
+
+    updateCartCount();
+
+    closeProduct();
+
+    openCart();
+
+}
+
+
+/* =========================
+   UPDATE CART COUNT
+========================= */
+
+function updateCartCount() {
+
+    const count = cart.reduce(function(total, item) {
+
+        return total + item.quantity;
+
+    }, 0);
+
+
+    document.getElementById("cartCount").textContent = count;
+
+}
+
+
+/* =========================
+   OPEN CART
+========================= */
+
+function openCart() {
+
+    const cartModal = document.getElementById("cartModal");
+
+    const cartItems = document.getElementById("cartItems");
+
+    const cartTotal = document.getElementById("cartTotal");
+
+
+    cartItems.innerHTML = "";
+
+
+    /* EMPTY CART */
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+        `;
+
+        cartTotal.textContent = "₦0";
+
+        cartModal.classList.add("active");
+
+        return;
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item, index) {
+
+        const itemTotal = item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        const cartItem = document.createElement("div");
+
+        cartItem.className = "cart-item";
+
+
+        cartItem.innerHTML = `
+
+            <div class="cart-item-details">
+
+                <h4>${item.name}</h4>
+
+                ${
+                    item.colour
+                    ? `<p>Colour: ${item.colour}</p>`
+                    : ""
+                }
+
+                ${
+                    item.size
+                    ? `<p>Size: ${item.size}</p>`
+                    : ""
+                }
+
+                <p>Quantity: ${item.quantity}</p>
+
+                <p class="cart-price">
+                    ₦${itemTotal.toLocaleString()}
+                </p>
+
+                <button
+                    type="button"
+                    class="remove-item"
+                    onclick="removeFromCart(${index})">
+
+                    REMOVE
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        cartItems.appendChild(cartItem);
+
+    });
+
+
+    cartTotal.textContent = "₦" + total.toLocaleString();
+
+
+    cartModal.classList.add("active");
+
+}
+
+
+/* =========================
+   CLOSE CART
+========================= */
+
+function closeCart() {
+
+    document.getElementById("cartModal").classList.remove("active");
+
+}
+
+
+/* =========================
+   REMOVE FROM CART
+========================= */
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCartCount();
+
+    openCart();
+
+}
+
+
+/* =========================
+   OPEN CHECKOUT
+========================= */
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+
+        return;
+    }
+
+
+    const checkoutModal =
+        document.getElementById("checkoutModal");
+
+    const checkoutItems =
+        document.getElementById("checkoutItems");
+
+    const checkoutTotal =
+        document.getElementById("checkoutTotal");
+
+
+    checkoutItems.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item) {
+
+        const itemTotal = item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        const checkoutItem =
+            document.createElement("div");
+
+        checkoutItem.className = "checkout-item";
+
+
+        checkoutItem.innerHTML = `
+
+            <strong>
+                ${item.name}
+            </strong>
+
+            ${
+                item.colour
+                ? `<p>Colour: ${item.colour}</p>`
+                : ""
+            }
+
+            ${
+                item.size
+                ? `<p>Size: ${item.size}</p>`
+                : ""
+            }
+
+            <p>
+                Quantity: ${item.quantity}
+            </p>
+
+            <p>
+                ₦${itemTotal.toLocaleString()}
+            </p>
+
+        `;
+
+
+        checkoutItems.appendChild(checkoutItem);
+
+    });
+
+
+    checkoutTotal.textContent =
+        "₦" + total.toLocaleString();
+
+
+    closeCart();
+
+    checkoutModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =========================
+   CLOSE CHECKOUT
+========================= */
+
+function closeCheckout() {
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================
+   CHECKOUT FORM
+========================= */
+
+const checkoutForm =
+    document.getElementById("checkoutForm");
+
+
+if (checkoutForm) {
+
+    checkoutForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+
+        }
+
+
+        const customerName =
+            document.getElementById("customerName").value;
+
+        const customerPhone =
+            document.getElementById("customerPhone").value;
+
+        const customerEmail =
+            document.getElementById("customerEmail").value;
+
+        const customerAddress =
+            document.getElementById("customerAddress").value;
+
+        const paymentMethod =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            ).value;
+
+
+        console.log("ORDER DETAILS:", {
+
+            customerName,
+            customerPhone,
+            customerEmail,
+            customerAddress,
+            paymentMethod,
+            cart
+
+        });
+
+
+        alert(
+            "Thank you, " +
+            customerName +
+            "! Your order has been received."
+        );
+
+
+        /* Clear cart */
+
+        cart = [];
+
+        updateCartCount();
+
+        checkoutForm.reset();
+
+        closeCheckout();
+
+    });
+
+}
+
+
+/* =========================
+   CART BUTTON
+========================= */
+
+const cartButton =
+    document.getElementById("cartButton");
+
+
+if (cartButton) {
+
+    cartButton.addEventListener("click", function() {
+
+        openCart();
+
+    });
+
+}
+
+
+/* =========================
+   CLOSE MODALS BY CLICKING
+   OUTSIDE CONTENT
+========================= */
+
+document.getElementById("productModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeProduct();
+
+        }
+
+    });
+
+
+document.getElementById("cartModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeCart();
+
+        }
+
+    });
+
+
+document.getElementById("checkoutModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeCheckout();
+
+        }
+
+    });
+
+
+/* =========================
+   ESC KEY
+========================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeProduct();
+
+        closeCart();
+
+        closeCheckout();
+
+    }
+
+});
+
+
+/* =========================
+   MAKE FUNCTIONS AVAILABLE
+   TO HTML onclick=""
+========================= */
+
+window.openProduct = openProduct;
+window.closeProduct = closeProduct;
+window.selectSize = selectSize;
+window.changeQuantity = changeQuantity;
+window.addToCart = addToCart;
+window.openCart = openCart;
+window.closeCart = closeCart;
+window.removeFromCart = removeFromCart;
+window.openCheckout = openCheckout;
+window.closeCheckout = closeCheckout;
+/* =========================
+   USER LOGIN
+========================= */
+
+function openLogin() {
+
+    const loginModal =
+        document.getElementById("loginModal");
+
+    if (loginModal) {
+
+        loginModal.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+}
+
+
+function closeLogin() {
+
+    const loginModal =
+        document.getElementById("loginModal");
+
+    if (loginModal) {
+
+        loginModal.classList.remove("active");
+
+    }
+
+    document.body.style.overflow = "";
+
+}
+
+
+window.openLogin = openLogin;
+window.closeLogin = closeLogin;
+/* =========================
+   LOGIN FORM
+========================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("loginEmail").value.trim();
+
+            const password =
+                document.getElementById("loginPassword").value.trim();
+
+            if (!email || !password) {
+                alert("Please enter your email and password.");
+                return;
+            }
+
+            alert("LOGIN SUCCESSFUL!");
+
+            this.reset();
+
+            closeLogin();
+
+        }
+    );
+
+  }
+/* =========================
+   INITIAL CART COUNT
+========================= */
+
+updateCartCount();
+
+
+</script>
+
+    <script src="connect.js"></script>
+</body>
+  
+</html>
